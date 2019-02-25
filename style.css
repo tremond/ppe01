@@ -1,0 +1,254 @@
+html, body { 
+    margin:0; 
+    padding:0; 
+    height:100%; 
+}  
+
+/* CONNEXION */
+
+#backgroundConnexion {
+    background-image: url("./Castleinthesky.png");
+    background-size: cover;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.h2 {
+    color: cornflowerblue;
+    font-size: 160%;
+}
+
+.formConnexion {
+    opacity: 1;
+    width: 22%;
+    height: 35%;
+    display: block;
+    text-align: center;
+    background: white;
+    margin: 15% auto;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0, .4);
+    padding-top: 1px;
+}
+
+#failConnection {
+    display: block;
+    text-align: center;
+}
+
+/* ADMIN PAGE */
+.admincontainer {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.adminHeader {
+    padding: 0;
+    margin: 0;
+    background-image: url("./Castleinthesky.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%; 
+    height: 150px;
+}
+
+#clock {
+    color: black;
+    position: relative;
+    text-align: right;
+}
+
+.adminTitle {
+    margin: 0;
+    padding: 0;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.adminLogOut {
+    position: relative;
+    text-align: right;
+    top: 65px;
+}
+
+.admincontent {
+    height: 100%;
+}
+
+.ModifierTPAdmin{
+    color: black;
+}
+
+.SupprimerTPAdmin {
+    color: black;
+}
+
+.adminnav {
+    height: 100%;
+    margin: 0;
+    font-family: Arial; 
+}
+
+/* USER PAGE */
+.userContainer {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.userHeader {
+    height: 100px;
+    background-image: url("./Castleinthesky.png");
+}
+
+.userTitle {
+    margin: 0;
+    padding: 0;
+    color: black;
+    text-align: center;
+    font-weight: bold; 
+}
+
+#userLogOut {
+    display: block;
+    text-align: right;
+
+}
+
+.userContent {
+    height: 100%;
+
+}
+
+.userNav {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+}
+
+* {box-sizing: border-box}
+
+/* Style tab links */
+.tablink {
+    background-color: grey;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+  
+.tablink:hover {
+    background-color: #777;
+}
+  
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+}
+  
+#userTp {background-color: #0A4B8A;}
+#userCorrection {background-color: #3B9D31;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+
+.userMain {
+
+}
+
+.userFooter {
+
+}
+
+/* CREATION TP */
+#creationTPHeader {
+    background-image: url("");/*image claire*/
+    background-size: cover;
+}
+
+#creationTpTitle {
+    margin: 0;
+    text-align: center;
+}
+
+#logOutCreationTP{
+    
+}
+
+#creationTPHeaderContent {
+    text-align: right;
+}
+
+#utilitary_buttons {
+    line-height: 20px;
+}
+
+#button_clone {
+    position: fixed;
+    right: 20px;
+}   
+
+#button_envoieTP {
+    position: fixed;
+    right: 20px;
+}
+
+#buttonDelete {
+
+}
+
+#creationTPMain {
+    height: 100%;  
+}
+
+.zoneCreation {
+    margin: 2%;
+}
+
+#zoneQuestion {
+    padding: 0.8%;
+    text-align: center;
+}
+
+#zone_Enonce_Correction {
+    
+}
+
+.boxEnonceCorrection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#EnonceContent {
+    background-color: tomato;
+    height: 475px;
+    width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#CorrectionContent {
+    height: 475px;
+    width: 1000px;
+    background-color: palegreen; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enonceTextArea {
+    resize: none;
+    width: 668px;
+    height: 377px;
+    
+}
