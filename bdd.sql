@@ -36,32 +36,34 @@ CREATE TABLE Reponse (
     PRIMARY KEY (id)
 )   DEFAULT CHARSET=utf8;
 
-ALTER TABLE Utilisateur  
-ADD CONSTRAINT Utilisateur_idUtilisateur
+ALTER TABLE Exercice  
+ADD CONSTRAINT Exercice_idUtilisateur
 FOREIGN KEY (idUtilisateur)
-REFERENCES Exercice(idUtilisateur);
+REFERENCES Utilisateur(id);
 
-ALTER TABLE Utilisateur 
-ADD CONSTRAINT Utilisateur_idUtilisateur
+ALTER TABLE CompteRendu 
+ADD CONSTRAINT CompteRendu_idUtilisateur
 FOREIGN KEY (idUtilisateur)
-REFERENCES CompteRendu(idUtilisateur);
-
-ALTER TABLE Exercice   
-ADD CONSTRAINT Exercice_idExercice
-FOREIGN KEY (idExercice)
-REFERENCES Question(idExercice);
-
-ALTER TABLE CompteRendu   
-ADD CONSTRAINT CompteRendu_idCompteRendu
-FOREIGN KEY (idCompteRendu)
-REFERENCES Reponse(idCompteRendu);
+REFERENCES Utilisateur(id);
 
 ALTER TABLE Question   
-ADD CONSTRAINT Question_idQuestion
+ADD CONSTRAINT Question_idExercice
+FOREIGN KEY (idExercice)
+REFERENCES Exercice(id);
+
+ALTER TABLE Reponse   
+ADD CONSTRAINT Reponse_idCompteRendu
+FOREIGN KEY (idCompteRendu)
+REFERENCES CompteRendu(id);
+
+ALTER TABLE Reponse   
+ADD CONSTRAINT Reponse_idQuestion
 FOREIGN KEY (idQuestion)
-REFERENCES Reponse(idQuestion);
+REFERENCES Question(id);
 
 INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("Pepito", sha1("password"), true);
 INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
 INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("adummonet", sha1("password"), false);
 INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("nmoresco", sha1("password"), false);
+
+

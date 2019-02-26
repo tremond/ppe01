@@ -3,8 +3,10 @@
     if(empty($_SESSION['user'])) {
         header('Location: index.php');exit;
     }  
-
     include("./components/headAdmin.php");
+
+    $idExercice = 1;
+    var_dump(getLesExercicesQuestions($idExercice));
 ?>
 
 

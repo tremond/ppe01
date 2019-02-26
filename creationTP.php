@@ -34,7 +34,7 @@
 
             </div>
 
-            <button class="btn waves-effect waves-light blue lighten-2" onclick="addQuestionZone()">Ajouter question
+            <button class="btn waves-effect waves-light blue lighten-2" style="margin:1%" onclick="addQuestionZone()">Ajouter question
                 <i class="material-icons right">add</i>
             </button>
             
