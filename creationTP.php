@@ -11,21 +11,40 @@
 <div class="row">
     <form method="post" action="?" class="col s12">
         <div class="row">
-            <div class="input-field col s12">
-                <textarea id="enonceX" class="materialize-textarea"></textarea>
-                <label for="enonceX">Énoncé X</label>
+            <div id="questionZone" class="col s12">
+
+
+
+                <div id="question1" class="col s12 blue lighten-5" style="margin-bottom:2%">
+                    <!-- <div class="col s12 right-align">
+                        <button class="btn waves-effect waves-light blue lighten-2" onclick="removeQuestionZone('1')">
+                            <i class="material-icons right">close</i>
+                        </button>
+                    </div> -->
+                    <div class="input-field col s12">
+                        <textarea id="enonce1" class="materialize-textarea" name="enonce1"></textarea>
+                        <label for="enonce1">Énoncé 1</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="corrige1" class="materialize-textarea" name="corrige1"></textarea>
+                        <label for="corrige1">Corrigé 1</label>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="input-field col s12">
-                <textarea id="corrigeX" class="materialize-textarea"></textarea>
-                <label for="corrigeX">Corrigé X</label>
-            </div>
+
+            <button class="btn waves-effect waves-light blue lighten-2" onclick="addQuestionZone()">Ajouter question
+                <i class="material-icons right">add</i>
+            </button>
+            
             <div class="input-field col s12">
                 <textarea id="script" class="materialize-textarea" name="script" required></textarea>
                 <label for="script">Script de création de la BDD :</label>
             </div>
         </div>
 
-        <button style="background-color:#64b5f6" class="btn waves-effect waves-light" type="submit" name="action">Enregistrer
+        <button style="background-color:#64b5f6" class="btn waves-effect waves-light" type="submit">Enregistrer
             <i class="material-icons right">send</i>
         </button>
     </form>
@@ -34,9 +53,10 @@
 <?php
     include("./components/footer.php");
 
-    if(!empty($_POST['identifiant'])) {
-        
+    if(!empty($_POST['script'])) {
+        var_dump($_POST);
     }
 ?>
 
 <script src="./scriptTime.js"></script>
+<script type="text/javascript" src="./script.js"></script>
