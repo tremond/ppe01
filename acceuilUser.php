@@ -1,19 +1,21 @@
 <?php
-    include("header.php");
+    include("./components/header.php");
     if(empty($_SESSION['user'])) {
         header('Location: index.php');exit;
     }
 ?>
 
-<div class ="userContainer">
-    
-    <div class = "userHeader">
+<div class = "userHeader">
         <h2 class="userTitle">MySqlCorrector</h2>
             <div id="clock"></div>
                 <div id ="userLogOut">  
                     <a href="./index.php?deconnexion=true" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-log-out"></span> Log out</a>
-    </div>
+</div>
+
+<div class ="userContainer">
+    
+    
 
         
     </div>
@@ -67,7 +69,7 @@
 </div>
 
 <?php
-    include("footer.php");
+    include("./components/footer.php");
 ?>
 
 <script src="./scriptTime.js"></script>

@@ -1,50 +1,42 @@
 <?php
-    include("header.php");
+    include("./components/header.php");
     if(empty($_SESSION['user'])) {
         header('Location: index.php');exit;
     }  
+    include("./components/headAdmin.php");
 ?>
+<br>
+<br>
+<h3 class="h3">Création d'un nouvel exercice</h3>
+<div class="row">
+    <form method="post" action="?" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="enonceX" class="materialize-textarea"></textarea>
+                <label for="enonceX">Énoncé X</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="corrigeX" class="materialize-textarea"></textarea>
+                <label for="corrigeX">Corrigé X</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="script" class="materialize-textarea" name="script" required></textarea>
+                <label for="script">Script de création de la BDD :</label>
+            </div>
+        </div>
 
-<div id="creationTPHeader">
-
-    <div id="creationTPTitle">
-        <h3 id="creationTpTitle">MySqlCorrector</h3>
-        <div id="clock"></div>
-    </div>  
-    
-    <div id="creationTPHeaderContent">
-        <a href="./index.php?deconnexion=true" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-log-out" id="logOutCreationTP"></span>Log out</a>
-    </div> 
+        <button style="background-color:#64b5f6" class="btn waves-effect waves-light" type="submit" name="action">Enregistrer
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
 </div>
-
-<div id="utilitary_buttons">
-    <input type="button" value="Clonage !" id="button_clone">
-    <form method="post"><input type="button" value="Envoyer" id="button_envoieTP"></form>
-</div>
-
-<div id="creationTPMain">
-</div>
-
 
 <?php
+    include("./components/footer.php");
 
-/*
-if(isset($_POST['zoneCreationTP'])) {
-    if($_POST['zoneCreationTP']!="") {
-        echo $_POST['zoneCreationTP'];
-        echo $_POST['numeroEnonce'];
+    if(!empty($_POST['identifiant'])) {
+        
     }
-    else {
-        echo "<p style=color:red>Aucune valeure !!!</p>";
-    }
-}
-    */    
-?>
-
-
-<?php
-    include("footer.php");
 ?>
 
 <script src="./scriptTime.js"></script>
