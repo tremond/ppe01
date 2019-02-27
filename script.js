@@ -1,45 +1,17 @@
-function onClickTp() {
-    var myWindow = window.open("creationTP");
+var nbQuestionZone = 1;
+
+function addQuestionZone() {
+    nbQuestionZone++;
+    var newQuestionZone = '<div id="question' +nbQuestionZone+ '" class="col s12 blue lighten-5" style="margin-bottom:2%"><div class="col s12 right-align"><button class="btn waves-effect waves-light blue lighten-2" onclick="removeQuestionZone(' +nbQuestionZone+ ')"><i class="material-icons right">close</i></button></div><div class="input-field col s12"><textarea id="enonce' +nbQuestionZone+ '" class="materialize-textarea" name="enonce' +nbQuestionZone+ '"></textarea><label for="enonce' +nbQuestionZone+ '">Énoncé ' +nbQuestionZone+ '</label></div><div class="input-field col s12"><textarea id="corrige' +nbQuestionZone+ '" class="materialize-textarea" name="corrige' +nbQuestionZone+ '"></textarea><label for="corrige' +nbQuestionZone+ '">Corrigé ' +nbQuestionZone+ '</label></div></div>'
+    //document.getElementById('questionZone').innerHTML = document.getElementById('questionZone').innerHTML + newQuestionZone;
+    $( "#questionZone" ).append( newQuestionZone );
 }
 
-function onClickListeTp () {
-    var myWindow = window.open("listeTP");
+function removeQuestionZone(id) {
+    nbQuestionZone--;
+    $( "#question" + id ).remove(  );
 }
 
-function onCorrection() {
-    var myWindow = window.open("correction");
-}
-
-function removeDiv(element) {
-    console.log($(element).parent().get(0));
-    $($($($(element).parent().get(0)).parent().get(0)).parent().get(0)).remove();
-}
-
-function kagebushinojutsu() {
-    var laDivQuiAppend = $('#creationTPMain');
-    var laDivADuppliquer = $('<div id="zoneCreation '+ laDivQuiAppend.children().length +'" class="zoneCreation">' + 
-                                '<form method="post">' +
-                                    '<div id="zoneQuestion'+ laDivQuiAppend.children().length +'">' + 
-                                            '<textarea id="zoneQuestion'+ laDivQuiAppend.children().length +'" cols="80" rows="5" placeholder="question ici" style="resize: none"></textarea>' +
-                                            '<button id="buttonDelete'+ laDivQuiAppend.children().length +'" onClick="removeDiv(this)"> Delete  </button>' +
-                                    '</div>' + 
-                                    '<div id="zone_Enonce_Correction'+ laDivQuiAppend.children().length +'" class="boxEnonceCorrection">' +
-                                        '<div id="EnonceContent'+ laDivQuiAppend.children().length +'">' +
-                                            '<textarea class="enonceTextArea" cols="30" rows="10"></textarea>' + 
-                                        '</div>' +
-                                        '<div id="CorrectionContent'+ laDivQuiAppend.children().length +'">' +
-                                            '<textarea class="enonceTextArea" cols="30" rows="10"></textarea>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</form>' +
-                            '</div>');
-    $(laDivADuppliquer).appendTo(laDivQuiAppend);
-}
-
-$("#button_clone").click(function() {
-    kagebushinojutsu();     
-});
-
-$( document ).ready(function() {
-    kagebushinojutsu();
-});
+/*$( document ).ready(function() {
+    console.log( "ready!" );
+});*/

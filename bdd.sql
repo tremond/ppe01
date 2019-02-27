@@ -1,79 +1,69 @@
-CREATE TABLE Users (
-    idUser int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE Utilisateur (
+    id int(11) NOT NULL AUTO_INCREMENT,
     login VARCHAR(64),
     password VARCHAR(64),
     isAdmin boolean,
-    prenom VARCHAR(64),
-    nom VARCHAR(64),
-    idUsers_Exercice int(11),
-    PRIMARY KEY (idUser)
-)   DEFAULT CHARSET=utf8;
-
-CREATE TABLE Users_Exercice (
-    idUsers_Exercice int(11) NOT NULL AUTO_INCREMENT,
-    idUser int(11),
-    idExercice int(11),
-    Correction text,
-    PRIMARY KEY (idUsers_Exercice)
+    PRIMARY KEY (id)
 )   DEFAULT CHARSET=utf8;
 
 CREATE TABLE Exercice (
-    idExercice int(11) NOT NULL AUTO_INCREMENT,
-    exercice text,
-    idTP int(11),
-    idEnonce int(11),
-    Enonce text,
-    idUsers_Exercice int(11),
-    PRIMARY KEY (idExercice)
-)   DEFAULT CHARSET=utf8;
-
-CREATE TABLE TP (
-    idTP int(11) NOT NULL AUTO_INCREMENT,
-    nomTP VARCHAR(64),
+    id int(11) NOT NULL AUTO_INCREMENT,
+    script VARCHAR(64),
     date DATE,
-    idCorrection int(11),
-    idEnonce int(11),
-    urlScriptSql VARCHAR(64),
-    PRIMARY KEY (idTP)
+    idUtilisateur int(11),
+    PRIMARY KEY (id)
 )   DEFAULT CHARSET=utf8;
 
-ALTER TABLE Users   
-ADD CONSTRAINT Users_idUsers_Exercice
-FOREIGN KEY (idUsers_Exercice)
-REFERENCES Users_Exercice(idUsers_Exercice);
+CREATE TABLE CompteRendu (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    idUtilisateur int(11),
+    PRIMARY KEY (id)
+)   DEFAULT CHARSET=utf8;
 
-ALTER TABLE Users_Exercice 
-ADD CONSTRAINT Users_Exercice_idExercice
+CREATE TABLE Question (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    enonce TEXT,
+    corrige TEXT,
+    idExercice int(11),
+    PRIMARY KEY (id)
+)   DEFAULT CHARSET=utf8;
+
+CREATE TABLE Reponse (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    requete TEXT,
+    idQuestion int(11),
+    idCompteRendu int(11),
+    PRIMARY KEY (id)
+)   DEFAULT CHARSET=utf8;
+
+ALTER TABLE Exercice  
+ADD CONSTRAINT Exercice_idUtilisateur
+FOREIGN KEY (idUtilisateur)
+REFERENCES Utilisateur(id);
+
+ALTER TABLE CompteRendu 
+ADD CONSTRAINT CompteRendu_idUtilisateur
+FOREIGN KEY (idUtilisateur)
+REFERENCES Utilisateur(id);
+
+ALTER TABLE Question   
+ADD CONSTRAINT Question_idExercice
 FOREIGN KEY (idExercice)
-REFERENCES Exercice(idExercice);
+REFERENCES Exercice(id);
 
-ALTER TABLE Exercice   
-ADD CONSTRAINT Exercice_idTP
-FOREIGN KEY (idTP)
-REFERENCES TP(idTP);
+ALTER TABLE Reponse   
+ADD CONSTRAINT Reponse_idCompteRendu
+FOREIGN KEY (idCompteRendu)
+REFERENCES CompteRendu(id);
 
-INSERT INTO Users (login, password, isAdmin) VALUES ("Pepito", sha1("password"), true);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("adummonet", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("nmoresco", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
-INSERT INTO Users (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
+ALTER TABLE Reponse   
+ADD CONSTRAINT Reponse_idQuestion
+FOREIGN KEY (idQuestion)
+REFERENCES Question(id);
+
+INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("Pepito", sha1("password"), true);
+INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("Michel", sha1("password"), false);
+INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("adummonet", sha1("password"), false);
+INSERT INTO Utilisateur (login, password, isAdmin) VALUES ("nmoresco", sha1("password"), false);
 
 
-
-INSERT INTO Exercice (Enonce) VALUES ("Je suis l'enonce 1");
-
-INSERT INTO TP (nomTP) VALUES ("TP1");
-INSERT INTO TP (nomTP) VALUES ("TP2");
-INSERT INTO TP (nomTP) VALUES ("TP3");
-INSERT INTO TP (nomTP) VALUES ("TP4");
-INSERT INTO TP (nomTP) VALUES ("TP5");
-
- 

@@ -1,10 +1,10 @@
 <?php
 
 function tryConnection ($login, $password) {
-    $bdd = new PDO('mysql:host=localhost;dbname=ppe_01_v2;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe01v3;charset=utf8', 'root', '');
     $sqlSelect = 
         "   SELECT * 
-            FROM Users 
+            FROM Utilisateur 
             WHERE login = '$login' 
             AND password = SHA1('$password')";
     
@@ -18,32 +18,36 @@ function tryConnection ($login, $password) {
     return $donnees;
 }
 
-function printEnonce() {
-    $bdd = new PDO('mysql:host=localhost;dbname=ppe_01_v2;charset=utf8', 'root', '');
-    $sqlSelect =
-        "   SELECT Enonce
-            FROM Exercice";
+function getLesExercices() {
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe01v3;charset=utf8', 'root', '');
+    $sqlSelect = "SELECT * FROM Exercice";
     $reponse = $bdd->query($sqlSelect);
-    while($donnees=$reponse->fetch()){
-        $reponse2 = $bdd->query($sqlSelect);
-        $data = $reponse2->fetch();
-        echo $data['Enonce'];
-    }
+    $donnees = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $donnees;
 }
 
-function laListeTP () {
-    $bdd = new PDO('mysql:host=localhost;dbname=ppe_01_v2;charset=utf8', 'root', '');
-    $sqlSelect =
-        "   SELECT nomTP 
-            FROM tp";
+function addExercice($exercice) {
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe01v3;charset=utf8', 'root', '');
+    $sqlSelect = "INSERT INTO exercice (script, date) VALUES ('$script', '$date');";
     $reponse = $bdd->query($sqlSelect);
-    while($donnees = $reponse->fetch()) {
-        for ($i = 0 ; $i < count($donnees) /2 ; $i++) {
-            echo '<span>' . $donnees[$i] . '</span>';
-            echo '<span><button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></span>';
-            echo '<span><button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span></button></span>'; 
-            echo "<br />";
-        }
-    }
+    $donnees = $reponse->fetchAll();
+    $reponse->closeCursor();
+}
+
+function getLesExercicesQuestions($idExercice) {
+    $bdd = new PDO('mysql:host=localhost;dbname=ppe01v3;charset=utf8', 'root', '');
+    $sqlSelect = 
+    "   SELECT * 
+        FROM exercice 
+        INNER JOIN question 
+        ON question.idExercice = exercice.id
+        ORDER BY exercice.id;
+
+        
+    $reponse = $bdd->query($sqlSelect);
+    $donnees = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $donnees;
 }
 ?>

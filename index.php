@@ -15,9 +15,9 @@ if(!empty($_SESSION['user'])) {
     elseif ($_SESSION['user']['isAdmin'] == "0") {
         header('Location: acceuilUser.php');exit;
     } 
-    }
-    else {
-        header('Location: connexion.php');exit;
-    }
+}
+else {
+    header('Location: connexion.php');exit;
+}
 
 ?>
