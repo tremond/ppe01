@@ -42,7 +42,7 @@ function getLesExercicesQuestions($idExercice) {
         FROM exercice 
         INNER JOIN question 
         ON question.idExercice = exercice.id
-        ORDER BY exercice.id;
+        ORDER BY exercice.id";
 
         
     $reponse = $bdd->query($sqlSelect);
